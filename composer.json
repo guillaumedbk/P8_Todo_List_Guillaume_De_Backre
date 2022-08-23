@@ -32,7 +32,8 @@
         "symfony/validator": "^5.4",
         "symfony/security-bundle": "^5.4",
         "symfony/twig-bundle": "^5.4",
-        "sensio/framework-extra-bundle": "^5.0"
+        "sensio/framework-extra-bundle": "^5.0",
+        "doctrine/doctrine-migrations-bundle": "^3.2"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.0",
