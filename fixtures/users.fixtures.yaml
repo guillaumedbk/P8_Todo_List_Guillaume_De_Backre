@@ -1,11 +1,6 @@
 App\Entity\User:
   anonyme:
-    __construct :
-      - ANONYME
-      - Motdepasse
-      - anonyme@mail.com
-  user:
-    __construct:
-      - Guillaume
-      - Motdepasse
-      - email@mail.com
+    username: ANONYME
+    password: Motdepasse
+    email: anonyme@mail.com
+
