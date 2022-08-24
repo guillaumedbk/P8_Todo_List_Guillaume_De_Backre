@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Table("user")
@@ -20,25 +23,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
      */
-    private $username;
+    private string $username;
 
     /**
      * @ORM\Column(type="string", length=64)
      */
-    private $password;
+    private string $password;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir une adresse email.")
      * @Assert\Email(message="Le format de l'adresse n'est pas correcte.")
      */
-    private $email;
+    private string $email;
+
+    /**
+     * @ORM\OneToMany(mappedBy="user",targetEntity="App\Entity\Task")
+     */
+    private Collection $task;
+
+    public function __construct()
+    {
+        $this->task = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -88,4 +101,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
     }
+
+    /**
+     * @return iterable<Task>
+     */
+    public function getTask(): iterable
+    {
+        return $this->task;
+    }
+
+
 }
