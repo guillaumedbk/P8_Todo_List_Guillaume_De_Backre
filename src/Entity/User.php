@@ -48,9 +48,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private Collection $task;
 
-    public function __construct()
+    public function __construct(string $username, string $password, string $email)
     {
         $this->task = new ArrayCollection();
+        $this->username = $username;
+        $this->password = $password;
+        $this->email = $email;
     }
 
     public function getId()
