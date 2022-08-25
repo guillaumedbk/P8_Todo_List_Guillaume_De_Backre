@@ -45,7 +45,7 @@ class Task
     private bool $isDone;
 
     /**
-     * @ORM\ManyToOne(inversedBy="user", targetEntity="App\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(inversedBy="task", targetEntity="App\Entity\User", cascade={"persist"})
      * @JoinColumn(nullable=false)
      */
     private User $user;

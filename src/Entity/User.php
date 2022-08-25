@@ -47,9 +47,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private string $email;
 
-    /**
-     * @ORM\OneToMany(mappedBy="user",targetEntity="App\Entity\Task")
-     */
     private Collection $task;
 
     /**
