@@ -18,6 +18,10 @@ use Doctrine\Common\Collections\Collection;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    //Status const
+    public const USER = 'ROLE_USER';
+    public const ADMIN = 'ROLE_ADMIN';
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -48,9 +52,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private Collection $task;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank(message="Un role doit être défini")
+     */
+    private string $roles;
+
     public function __construct()
     {
         $this->task = new ArrayCollection();
+        $this->roles = self::USER; //Default value
     }
 
     public function getId()
@@ -93,11 +104,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
     public function eraseCredentials()
     {
     }
@@ -110,5 +116,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->task;
     }
 
+    public function getRoles(): string
+    {
+        return $this->roles;
+    }
 
+    public function setRoles(string $roles): void
+    {
+        $this->roles = $roles;
+    }
 }
