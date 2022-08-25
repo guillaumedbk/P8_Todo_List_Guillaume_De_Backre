@@ -11,11 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class UserController extends AbstractController
 {
     /**
      * @Route("/users", name="user_list")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function listAction(UserRepository $userRepository): Response
     {
@@ -49,6 +51,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/users/{id}/edit", name="user_edit")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
