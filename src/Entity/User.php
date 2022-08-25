@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -50,28 +51,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $task;
 
     /**
-     * @ORM\Column(type="string", length=10)
-     * @Assert\NotBlank(message="Un role doit être défini")
+     * @var array|string[]
+     * @ORM\Column(type="json", length=60)
      */
-    private string $roles;
+    private array $roles = [self::USER]; //Default value
 
     public function __construct()
     {
         $this->task = new ArrayCollection();
-        $this->roles = self::USER; //Default value
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
 
-    public function setUsername($username)
+    public function setUsername($username): void
     {
         $this->username = $username;
     }
@@ -86,17 +86,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }
 
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -113,12 +113,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->task;
     }
 
-    public function getRoles(): string
+    public function getRoles(): array
     {
         return $this->roles;
     }
 
-    public function setRoles(string $roles): void
+    public function setRoles(array $roles): void
     {
         $this->roles = $roles;
     }
