@@ -50,7 +50,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/{id}/edit", name="user_edit")
      */
-    public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response
+    public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
 
@@ -60,7 +60,7 @@ class UserController extends AbstractController
             $password = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
 
-            $em->flush();
+            $entityManager->flush();
             $this->addFlash('success', "L'utilisateur a bien été modifié");
 
             return $this->redirectToRoute('user_list');
