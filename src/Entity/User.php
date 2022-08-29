@@ -32,6 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
+     * @Assert\Length(max=25, maxMessage="username ne peut dépasser 25 caractères")
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
      */
     private string $username;
