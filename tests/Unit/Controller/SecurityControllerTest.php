@@ -65,5 +65,4 @@ class SecurityControllerTest extends WebTestCase
         $client->followRedirect();
         $this->assertSelectorExists('.alert.alert-danger');
     }
-
 }
