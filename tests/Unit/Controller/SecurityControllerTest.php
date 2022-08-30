@@ -28,28 +28,16 @@ class SecurityControllerTest extends WebTestCase
     public function testLoginSuccessFull()
     {
         $client = static::createClient();
-        $session = $client->getContainer()->get('session');
-
-        $username = 'Guillaume Test';
-        // the firewall context defaults to the firewall name
-        $firewallContext = '_security_main';
-
-        $token = new UsernamePasswordToken($username, null, $firewallContext, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewallContext, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $client->getCookieJar()->set($cookie);
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('authenticate');
-        $crawler = $client->request('POST', '/login', [
-            '_csrf_token' => $csrfToken,
+        $crawler = $client->request('GET', '/login');
+        $form = $crawler->selectButton('Se connecter')->form([
             '_username' => 'Guillaume Test',
-            '_password' => 'Guillaume Test'
+            '_password' => 'Guillaume'
         ]);
+        $client->submit($form);
 
-        $this->assertResponseRedirects('homepage');
+        $this->assertResponseRedirects('http://localhost/');
         $client->followRedirect();
-        $this->assertSelectorTextContains('Bienvenue sur Todo List', $crawler->filter('#container h1')->text());
+        $this->assertSelectorTextContains('h1', 'Bienvenue sur Todo List');
     }
 
     public function testLoginWithBadCredentials()

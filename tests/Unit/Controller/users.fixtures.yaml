@@ -1,6 +1,6 @@
 App\Entity\User:
   anonyme:
     username: "ANONYME"
-    password: "\\$2y\\$13\\$SG1Em8BvGYFVE0cdob5Mn.YuUGi5hechzrDNnboO.YMXSeRe0r7Y2"
+    password: "\\$2y\\$13\\$fU5B6pwWZXQ5Jo0vOts4l.bzJ0rJdyqVZ2WjdyUQAVKy2aTuEpkTK"
     email: "anonyme\\@mail.com"
 
