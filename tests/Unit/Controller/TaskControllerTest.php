@@ -6,12 +6,15 @@ use App\Entity\Task;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 class TaskControllerTest extends WebTestCase
 {
+    use RefreshDatabaseTrait;
+
     private KernelBrowser $client;
     private ?UserRepository $userRepository;
     private ?TaskRepository $taskRepository;
@@ -98,7 +101,7 @@ class TaskControllerTest extends WebTestCase
         $testUser = $this->userRepository->findOneBy(['email' => 'guitest@mail.com']);
         $this->client->loginUser($testUser);
         $task = $this->taskRepository->findOneBy(['title' => 'test title']);
-        $this->client->request('GET', '/tasks/2/delete');
+        $this->client->request('GET', '/tasks/1/delete');
         $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
     }
 
