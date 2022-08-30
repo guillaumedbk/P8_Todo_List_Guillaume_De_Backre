@@ -49,7 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private string $email;
 
-    private Collection $task;
+    /**
+     * @var Collection<int, task>
+     * @ORM\OneToMany(mappedBy="user", targetEntity="App\Entity\Task", cascade={"persist"})
+     */
+    private Collection $tasks;
 
     /**
      * @var array|string[]
@@ -59,7 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->task = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
     }
 
     public function getId(): int
@@ -111,7 +115,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getTask(): iterable
     {
-        return $this->task;
+        return $this->tasks;
     }
 
     public function getRoles(): array

@@ -26,7 +26,7 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/, roles: [IS_AUTHENTICATED_REMEMBERED, ROLE_USER] }
 
 when@test:
     security:

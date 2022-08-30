@@ -20,7 +20,7 @@ class Task
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="datetime")
@@ -45,7 +45,7 @@ class Task
     private bool $isDone;
 
     /**
-     * @ORM\ManyToOne(inversedBy="task", targetEntity="App\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(inversedBy="tasks", targetEntity="App\Entity\User", cascade={"persist"})
      * @JoinColumn(nullable=false)
      */
     private User $user;
