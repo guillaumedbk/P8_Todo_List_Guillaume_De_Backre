@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit\Controller;
+namespace Tests\Functional\Controller;
 
-use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;

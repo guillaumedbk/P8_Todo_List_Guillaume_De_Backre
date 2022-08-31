@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit\Controller;
+namespace Tests\Functional\Controller;
 
-use App\Entity\Task;
 use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;

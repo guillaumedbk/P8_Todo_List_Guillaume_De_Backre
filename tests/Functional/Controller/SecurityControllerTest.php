@@ -1,16 +1,10 @@
 <?php
 
-namespace Tests\Unit\Controller;
+namespace Tests\Functional\Controller;
 
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
-use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class SecurityControllerTest extends WebTestCase
 {

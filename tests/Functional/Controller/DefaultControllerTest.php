@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Controller;
+namespace Tests\Functional\Controller;
 
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
