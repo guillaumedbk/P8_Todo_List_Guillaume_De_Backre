@@ -1,0 +1,13 @@
+App\Entity\User:
+  anonyme:
+    username: "ANONYME"
+    password: "\\$2y\\$13\\$fU5B6pwWZXQ5Jo0vOts4l.bzJ0rJdyqVZ2WjdyUQAVKy2aTuEpkTK"
+    email: "anonyme\\@mail.com"
+    roles: ['ROLE_ADMIN']
+
+  guillaume :
+    username : "Guillaume Test"
+    password : "\\$2y\\$13\\$fU5B6pwWZXQ5Jo0vOts4l.bzJ0rJdyqVZ2WjdyUQAVKy2aTuEpkTK"
+    email : "guitest\\@mail.com"
+    roles : [ 'ROLE_USER' ]
+

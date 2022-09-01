@@ -1,0 +1,6 @@
+App\Entity\Task:
+  task1 :
+    createdAt: '<dateTime()>'
+    title: Tache
+    content: Une nouvelle tâche à faire
+    user: "@anonyme"
