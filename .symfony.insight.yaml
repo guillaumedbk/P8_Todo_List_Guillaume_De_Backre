@@ -8,6 +8,3 @@ commit_failure_conditions:
 
 global_exclude_dirs:
   - fixtures
-
-
-    
