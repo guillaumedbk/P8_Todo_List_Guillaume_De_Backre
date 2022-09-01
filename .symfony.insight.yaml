@@ -8,3 +8,6 @@ commit_failure_conditions:
 
 global_exclude_dirs:
   - fixtures
+  - README.md
+  - Contribution.md
+\n
