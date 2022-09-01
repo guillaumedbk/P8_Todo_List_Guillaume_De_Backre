@@ -10,4 +10,3 @@ global_exclude_dirs:
   - fixtures
   - README.md
   - Contribution.md
-\n
