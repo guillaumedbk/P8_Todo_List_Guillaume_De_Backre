@@ -1,10 +1,3 @@
-ToDoList
-========
-
-Base du projet #8 : Améliorez un projet existant
-
-https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
-
 # ToDo & Co
 
 
@@ -51,3 +44,10 @@ symfony server:start
 
 ## Code Quality
 https://insight.symfony.com/projects/512f9597-fecd-4889-a98d-d30539c32bed
+
+ToDoList
+========
+
+Base du projet #8 : Améliorez un projet existant
+
+https://openclassrooms.com/projects/ameliorer-un-projet-existant-1
